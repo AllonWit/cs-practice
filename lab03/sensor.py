@@ -20,7 +20,7 @@ for i in range(n):
     if elem > ceiling:
         threshold_count += 1
     if elem > maximum:
-        maximum = elemco
+        maximum = elem
 
 print(n)                         
 print(error_count)
