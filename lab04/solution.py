@@ -10,4 +10,10 @@ def winner(names: list[str] , scores: list[float]) -> str:
             bet_index = i
     return names[best_index]
 
-
+def average(scores: list[float]) -> float:
+    if len(scores) == 0:
+        return 0.0
+    total = 0.0 
+    for scores in scores:
+        total += scores
+    return round(total / len(scores), 2)
