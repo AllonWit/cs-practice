@@ -13,7 +13,7 @@ def read_rows(lines):
             continue
         result = dict(zip(column , rows))
         rows.append(result)
-        return rows
+    return rows
 
 def count_types(rows):
     count = {}
@@ -33,4 +33,11 @@ def total_minutes(rows, kind):
             clean_val = row["минуты"].replace(",", ".")
             total = total + float(clean_val)
     return round(total , 1)
-    
+
+def to_csv(counts):
+    result = ["тип,количество"]
+    for line in sorted(counts.keys()):
+        line = f"{kind},{counts[kind]}" 
+        result.append(line) 
+        final_text =  "\n".join(result) + "\n"
+    return final_text
