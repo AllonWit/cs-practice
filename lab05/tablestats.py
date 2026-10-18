@@ -5,7 +5,7 @@ def read_rows(lines):
         variable = lin.strip()
         if variable == "":
             continue
-            
+        
         if column is None:
             column = []
             for name in variable.split(","):
@@ -17,8 +17,7 @@ def read_rows(lines):
         if len(meaning) != len(column):
             continue
         result = dict(zip(column, meaning))
-        rows.append(result)
-        
+        rows.append(result)     
     return rows
 
 
@@ -41,7 +40,6 @@ def total_minutes(rows, kind):
             clean_val = row["минуты"].replace(",", ".")
             if clean_val.replace(".", "", 1).isdigit():
                 total = total + float(clean_val)
-    
     return round(total, 1)
 
 
