@@ -1,7 +1,7 @@
 def count_items(values: list) -> dict:
     counts = {}
     for word in values:
-        counts[word] = count.get(word , 0) + 1
+        counts[word] = counts.get(word , 0) + 1
     return counts
 
 
