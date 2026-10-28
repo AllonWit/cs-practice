@@ -5,26 +5,20 @@ def reshape_rows(values, width):
         return []
     
     matrix = np.array(values, dtype=float).reshape(-1, width)
-    row_means = np.round(np.mean(matrix, axis=1), 6)
-    result = np.repeat(row_means, width).reshape(-1, width)
-    return result.tolist()
+    return np.round(matrix, 6).tolist()
 
 
 def block(matrix, rows, columns):
-    if not matrix:
+    if not matrix or not rows or not columns:
         return []
         
     arr = np.array(matrix, dtype=float)
     if arr.ndim == 1:
         arr = np.atleast_2d(arr)
         
-    if len(rows) > 0:
-        arr = np.delete(arr, rows, axis=0)
-        
-    if len(columns) > 0 and arr.size > 0:
-        arr = np.delete(arr, columns, axis=1)
-        
-    return arr.tolist()
+    # Вырезаем подматрицу на пересечении указанных строк и столбцов
+    res = arr[np.ix_(rows, columns)]
+    return np.round(res, 6).tolist()
 
 
 def column_means(matrix):
@@ -50,3 +44,4 @@ def column_range(matrix, index):
     column = arr[:, index]
     col_range = np.round(np.max(column) - np.min(column), 6)
     return float(col_range)
+
