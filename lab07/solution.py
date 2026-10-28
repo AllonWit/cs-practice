@@ -1,24 +1,47 @@
 import numpy as np
 
-def column_means(matrix: list) -> list:
-    if not matrix or not matrix[0]:
+def reshape_means(values, width):
+    if not values or width <= 0 or len(values) % width != 0:
         return []
     
-    arr = np.array(matrix, dtype=np.float64)
-    means = np.mean(arr, axis=0)
-    return np.round(means, 6).tolist()
+    # Преобразуем в двумерную матрицу заданной ширины
+    matrix = np.array(values, dtype=float).reshape(-1, width)
+    
+    # Вычисляем среднее по строкам и округляем до 6 знаков
+    means = np.round(np.mean(matrix, axis=1), 6)
+    return means.tolist()
 
-def normalize_rows(matrix: list) -> list:
-    if not matrix or not matrix[0]:
+
+def blank(matrix, rows, columns):
+    if not matrix or len(matrix) == 0:
         return []
+        
+    arr = np.array(matrix, dtype=float)
     
-    arr = np.array(matrix, dtype=np.float64)
-    row_min = np.min(arr, axis=1, keepdims=True)
-    row_max = np.max(arr, axis=1, keepdims=True)
+    # Удаляем указанные строки и столбцы
+    arr = np.delete(arr, rows, axis=0)
+    arr = np.delete(arr, columns, axis=1)
+    return arr.tolist()
+
+
+def column_means(matrix):
+    if not matrix or len(matrix) == 0 or len(matrix[0]) == 0:
+        return []
+        
+    arr = np.array(matrix, dtype=float)
     
-    row_range = row_max - row_min
-    # Защита от деления на ноль для строк из одинаковых чисел
-    row_range = np.where(row_range == 0, 1.0, row_range)
+    # Вычисляем среднее по столбцам и округляем до 6 знаков
+    means = np.round(np.mean(arr, axis=0), 6)
+    return means.tolist()
+
+
+def column_range(matrix, index):
+    if not matrix or len(matrix) == 0 or len(matrix[0]) == 0:
+        return 0.0
+        
+    arr = np.array(matrix, dtype=float)
+    column = arr[:, index]
     
-    normalized = (arr - row_min) / row_range
-    return np.round(normalized, 6).tolist()
+    # Разность между max и min в столбце с округлением до 6 знаков
+    col_range = np.round(np.max(column) - np.min(column), 6)
+    return float(col_range)
