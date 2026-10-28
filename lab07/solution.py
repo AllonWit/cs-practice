@@ -1,6 +1,6 @@
 import numpy as np
 
-def reshape_means(values, width):
+def reshape_rows(values, width):
     if not values or width <= 0 or len(values) % width != 0:
         return []
     
@@ -12,7 +12,7 @@ def reshape_means(values, width):
     return means.tolist()
 
 
-def blank(matrix, rows, columns):
+def block(matrix, rows, columns):
     if not matrix or len(matrix) == 0:
         return []
         
@@ -25,7 +25,7 @@ def blank(matrix, rows, columns):
 
 
 def column_means(matrix):
-    if not matrix or len(matrix) == 0 or len(matrix[0]) == 0:
+    if not matrix or len(matrix) == 0:
         return []
         
     arr = np.array(matrix, dtype=float)
@@ -36,7 +36,7 @@ def column_means(matrix):
 
 
 def column_range(matrix, index):
-    if not matrix or len(matrix) == 0 or len(matrix[0]) == 0:
+    if not matrix or len(matrix) == 0:
         return 0.0
         
     arr = np.array(matrix, dtype=float)
