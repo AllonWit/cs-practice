@@ -62,3 +62,30 @@ print("Shape:", matrix[1:4, 2:5].shape, "\n")
 
 print("Угловой блок 2x2 в правом нижнем углу:\n", matrix[-2:, -2:])
 print("Shape:", matrix[-2:, -2:].shape)
+
+# Задание 5
+print("\n\n")
+
+vector = np.array([10, 20, 30, 40, 50])
+vector[1:4] = 0
+print("vector после замены:", vector)
+
+small_matrix = np.arange(1, 10).reshape(3, 3)
+small_matrix[0, :] = -1
+small_matrix[1:, 1:] = 9
+print("small_matrix после замены:\n", small_matrix, "\n")
+
+changed_hours = hours.copy()
+changed_hours[2:5] = 99
+changed_hours[::2] = -1
+
+print("changed_hours:", changed_hours)
+print("Исходный hours:", hours, "\n")
+
+changed_matrix = matrix.copy()
+changed_matrix[1] = 0          
+changed_matrix[:, -1] = -1     
+changed_matrix[1:4, 1:4] = 100
+
+print("changed_matrix:\n", changed_matrix)
+print("Исходная matrix:\n", matrix)
