@@ -41,6 +41,24 @@ print(f"первую строку: {temperatures[ :, -1]}")
 
 print("Первые две строки без первого столбца:\n", temperatures[:2, 1:])
 
-center = temperatures[0:2, 1:3]
-print("Центральный фрагмент:\n", center)
-print("Форма центрального фрагмента:", center.shape)
+print("Центральный фрагмент:\n", temperatures[0:2, 1:3])
+print("Форма центрального фрагмента:", temperatures[0:2, 1:3].shape)
+
+# Задание 4
+print("\n\n")
+matrix = np.arange(1, 26).reshape(5, 5)
+
+print("Первые три строки:\n", matrix[:3])
+print("Shape:",matrix[:3].shape, "\n")
+
+print("Последние две строки:\n", matrix[-2:])
+print("Shape:", matrix[-2:].shape, "\n")
+
+print("Первые два столбца:\n", matrix[:, :2])
+print("Shape:", matrix[:, :2].shape, "\n")
+
+print("Фрагмент (строки 1–3, столбцы 2–4):\n", matrix[1:4, 2:5])
+print("Shape:", matrix[1:4, 2:5].shape, "\n")
+
+print("Угловой блок 2x2 в правом нижнем углу:\n", matrix[-2:, -2:])
+print("Shape:", matrix[-2:, -2:].shape)
