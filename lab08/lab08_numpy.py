@@ -1,5 +1,6 @@
 import numpy as np;
 
+# Задание 1
 hours = np.arange(0 , 22 , 3)
 line = np.linspace(0 , 1 , 5)
 zeros = np.zeros(6 , dtype=int)
@@ -12,3 +13,10 @@ print(f"zeros = {zeros}")
 print(f"unknown_table = {unknown_table}")
 print(f"identity = {identity}")
 
+# Задание 2
+
+print(hours[2])
+print(hours[-1])
+print(hours[2:6])
+print(hours[::2])
+print(hours[::-1])
