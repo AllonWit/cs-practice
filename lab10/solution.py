@@ -22,3 +22,12 @@ def replace_rectangle(
     arr = np.array(matrix).copy()
     arr[row_start:row_stop, column_start:column_stop] = value
     return arr.tolist()
+
+def matrix_vector_product(matrix: list[list[float]], vector: list[float]) -> list[float]:
+    return (np.array(matrix) @ np.array(vector)).tolist()
+
+def matrix_multiply(left: list[list[float]], right: list[list[float]]) -> list[list[float]]:
+    return (np.array(left) @ np.array(right)).tolist()
+
+def transpose_matrix(matrix: list[list[float]]) -> list[list[float]]:
+    return np.array(matrix).T.tolist()
